@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details pokemon{% endblock %}
+{% block h2 %}Your Pokemon : {{ pokemon.name }}{% endblock %}
+
+{% block body %}
+    <div class="actions">
+        <a class="btn bg-ok" href="{{ path('pkm_list') }}">Browse your Pokedex</a>
+        <a class="btn bg-ok" href="{{ path('pkm_random') }}">Random pokemon</a>
+        <a class="btn bg-warning" href="{{ path('pkm_delete',{'id':pokemon.id}) }}">Delete this pokemon</a>
+    </div>
+    <div class="detail">
+        <div class="illu details">
+            <img src="{{ asset("assets/images/#{ pokemon.name|lower }.svg") }}" alt=""></div>
+        <div class="details description">
+            <h4>{{ pokemon.name|upper }} - ID {{ pokemon.id }}</h4>
+            <p><strong>Caught : </strong>{{ pokemon.catchDate|date }} in {{ pokemon.catchPlace }}</p>
+            <p><strong>Level : </strong>{{ pokemon.level }}</p>
+            <p><strong>HP : </strong>{{ pokemon.hp }}</p>
+            <p><strong>Shiny : </strong>{{ pokemon.isShiny?'oui, et tout mignon avec ça':'non, mais mignon quand même !' }}</p>
+        </div>
+    </div>
+
+{% endblock %}

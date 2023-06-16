@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/pokeball.ico') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <a class="header" href="#"><img class="logo" src="{{ asset('assets/images/pokeballs.png') }}" alt=""></a>
+            <h1 class="header">Pokédex</h1>
+            <nav class="header" data-bs-theme="dark">
+                <ul class="header">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_main') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('pkm_list') }}">Pokedex</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_about_us') }}">About</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>{% block h2 %}{% endblock %}</h2>
+            {% block body %}
+                {% for label,messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert--{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endblock %}
+        </main>
+       <footer>
+           <hr>
+           <p>&copy;Pokedex by Maï 2023</p>
+       </footer>
+    </body>
+</html>

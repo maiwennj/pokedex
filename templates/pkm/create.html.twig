@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add a pokemon{% endblock %}
+{% block h2 %}Add a pokemon{% endblock %}
+
+{% block body %}
+        <div class="actions">
+                <a class="btn bg-ok" href="{{ path('pkm_list') }}">Browse your Pokedex</a>
+                <a class="btn bg-ok" href="{{ path('pkm_random') }}">Random pokemon</a>
+        </div>
+
+
+
+        <div class="detail">
+                <div class="illu details">
+                        <img src="{{ asset("assets/images/unown.svg") }}" alt=""></div>
+                <div class="details description">
+                        {{ form_start(form) }}
+                        {{ form_rest(form) }}
+                        <button type="submit">Enregistrer</button>
+                        {{ form_end(form) }}
+                </div>
+        </div>
+
+
+{#    {{ form_start(form) }}#}
+{#    {{ form_label(form.prenom) }}#}
+{#    {{ form_widget(form.prenom) }}#}
+
+{#    {{ form_label(form.nom) }}#}
+{#    {{ form_widget(form.nom) }}#}
+{#    {{ form_label(form.email) }}#}
+{#    {{ form_widget(form.email) }}#}
+{#    {{ form_rest(form) }}#}
+{#    <button type="submit">Enregistrer</button>#}
+{#    {{ form_end(form) }}#}
+
+{% endblock %}

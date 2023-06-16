@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List pokémon{% endblock %}
+{% block h2 %}My Pokedex{% endblock %}
+
+{% block body %}
+    <div class="actions">
+        <a class="btn bg-ok" href="{{ path('pkm_create') }}">Add a pokemon</a>
+        <a class="btn bg-ok" href="{{ path('pkm_random') }}">Random pokemon</a>
+    </div>
+
+    <div class="cards">
+        {%for pokemon in pokedex %}
+            <div class="card {{ pokemon.isShiny?'shiny':'not-shiny' }}" style="max-width: 20rem;">
+                <div class="card-header">
+                    <h4 class="card-title"><a href="{{ path('pkm_details',{'id': pokemon.id}) }}">{{ pokemon.name|upper }} {{ pokemon.isShiny?'&#10024;':'' }}</a></h4>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text"><strong>CAUGHT ON: </strong>{{ pokemon.catchDate|date }}</p>
+                    <p class="card-text"><strong>CAUGHT IN: </strong>{{ pokemon.catchPlace }}</p>
+                    <p class="card-text"><strong>LEVEL : </strong>{{ pokemon.level }}</p>
+                    <p class="card-text"><strong>HP : </strong>{{ pokemon.hp }}</p>
+                    <div class="div-illu"><img class="card-illu" src="{{ asset("assets/images/#{ pokemon.name|lower }.svg") }}" alt=""></div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
