@@ -11,14 +11,27 @@
     </div>
     <div class="detail">
         <div class="illu details">
-            <img src="{{ asset("assets/images/#{ pokemon.name|lower }.svg") }}" alt=""></div>
+            <img src="{{ asset("assets/images/#{ pokemon.specie.number }.svg") }}" alt=""></div>
         <div class="details description">
-            <h4>{{ pokemon.name|upper }} - ID {{ pokemon.id }}</h4>
-            <p><strong>Caught : </strong>{{ pokemon.catchDate|date }} in {{ pokemon.catchPlace }}</p>
-            <p><strong>Level : </strong>{{ pokemon.level }}</p>
-            <p><strong>HP : </strong>{{ pokemon.hp }}</p>
-            <p><strong>Shiny : </strong>{{ pokemon.isShiny?'oui, et tout mignon avec ça':'non, mais mignon quand même !' }}</p>
+            <div class="pkm_name" id="pkm_name"><h4>{{ pokemon.name|upper }} - ID {{ pokemon.id }}</h4></div>
+            <div class="pkm_details">
+                <p><strong>Specie : </strong>{{ pokemon.specie.number }} - {{ pokemon.specie.name }}</p>
+                <p><strong>Caught : </strong>{{ pokemon.catchDate|date }} in {{ pokemon.catchPlace }}</p>
+                <p><strong>Level : </strong>{{ pokemon.level }}</p>
+                <p><strong>HP : </strong>{{ pokemon.hp }}</p>
+                <p><strong>Shiny : </strong>{{ pokemon.isShiny?'Yes':'No, but cute as hell' }}</p>
+                <p id="types"><strong>Type(s) :</strong>
+
+                    {% for type in pokemon.specie.types %}
+                        <span class="pkm_types">{{ type.name }}</span>
+                    {% endfor %}
+                </p>
+            </div>
+
         </div>
     </div>
 
+{% endblock %}
+{% block scripts %}.
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 {% endblock %}

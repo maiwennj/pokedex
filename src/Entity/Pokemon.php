@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\PokemonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PokemonRepository::class)]
 class Pokemon
@@ -14,6 +17,7 @@ class Pokemon
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Assert\NotBlank()]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
@@ -21,16 +25,36 @@ class Pokemon
     private ?\DateTimeInterface $catchDate = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Assert\NotBlank()]
     private ?string $catchPlace = null;
 
     #[ORM\Column]
+    #[Assert\Assert\NotBlank()]
+    #[Assert\Positive]
     private ?int $level = null;
 
     #[ORM\Column]
+    #[Assert\Assert\NotBlank()]
+    #[Assert\PositiveOrZero]
     private ?int $hp = null;
 
     #[ORM\Column]
     private ?bool $isShiny = null;
+
+    #[Assert\Assert\NotBlank()]
+    #[ORM\ManyToOne(inversedBy: 'pokemons')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Specie $specie = null;
+
+    #[ORM\ManyToMany(targetEntity: Attacks::class)]
+    private Collection $attacks;
+
+    public function __construct()
+    {
+        $this->attacks = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -108,4 +132,41 @@ class Pokemon
 
         return $this;
     }
+
+    public function getSpecie(): ?Specie
+    {
+        return $this->specie;
+    }
+
+    public function setSpecie(?Specie $specie): static
+    {
+        $this->specie = $specie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Attacks>
+     */
+    public function getAttacks(): Collection
+    {
+        return $this->attacks;
+    }
+
+    public function addAttack(Attacks $attack): static
+    {
+        if (!$this->attacks->contains($attack)) {
+            $this->attacks->add($attack);
+        }
+
+        return $this;
+    }
+
+    public function removeAttack(Attacks $attack): static
+    {
+        $this->attacks->removeElement($attack);
+
+        return $this;
+    }
+
 }

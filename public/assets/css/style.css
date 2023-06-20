@@ -1,125 +1,45 @@
-/********************************** STYLES GENERAUX **********************************/
-h1{ color: red; }
-h2{ color: #281e83; text-align: center; }
-body{ font-family: Arial; margin:0; position: relative; min-height: 100vh;background-color: #eaeaea
+:root{
+    --pkm_blue:#281e83;
+    --pkm_yellow:#ffd301;
+    --pkm_grey:#383838;
+    --pkm_red:#FF0000FF;
+
+
 }
+
+@font-face {
+    font-family:'pokemon';
+    src: url("../fonts/PocketMonk-15ze.ttf") format("truetype");
+}
+
+/********************************** STYLES GENERAUX **********************************/
+body{
+    font-family: "Arial", serif;
+    margin:0;
+    position: relative;
+    background-color: #eaeaea;
+    height: 100%;
+
+}
+h1{font-family: pokemon, serif;}
+
+    h1 a{
+        text-decoration: none;
+        color: var(--pkm_red);
+    }
+
+h2{ color: var(--pkm_blue); text-align: center;margin-top: 10vh }
 
 /****************************** STYLES UTILITAIRES **********************************/
-
+/* backgrounds */
 .bg-ok{
-    background-color: #281e83;
+    background-color: var(--pkm_blue);
 }
 .bg-warning{
-    background-color: red;
+    background-color: var(--pkm_red);
 }
 
-/****************************** STYLES ELEMENTS ************************************/
-
-/*------------- HEADER ----------------*/
-header{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #383838;
-    height: 10vh;
-    width: 100vw;
-    box-shadow: 0 15px 5px red;
-}
-    .logo{ width: 50px; }
-    .header{ display: inline-block; }
-    nav ul li{
-        list-style:none;
-        display: inline-block;
-        font-size: 1.5em;
-        width: 150px;
-    }
-    nav ul li a{ color: white; text-decoration: none; }
-    nav ul li a:hover{  font-weight: bold; }
-    .logo:hover{ rotate: 30deg; }
-/*------------- FIN HEADER ----------------*/
-
-main{ margin: 50px; padding-bottom: 2.5rem; }
-
-footer {
-    text-align: center;
-    color: red;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
-}
-
-
-/****************************** STYLES CARDS **********************************/
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-
-}
-
-.card {
-    width: 250px;
-    height: 350px;
-    margin: 5px;
-    border-radius: 10px 10px;
-    /*border: 1px solid black;*/
-}
-
-
-
-.card-body{
-    margin: 10px;
-}
-
-.card-title{
-    text-align: center;
-    color: white;
-    margin: 0;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px 10px;
-}
-.card-title a{
-    color: #ffd301;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.5em;
-
-}
-.card-header{
-    background-color: #281e83 ;
-    text-align: right;
-    font-weight: bold;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-}
-
-.shiny{
-    /*background: red;*/
-    /*background: linear-gradient(128deg, rgba(255,255,255,0) 0%, rgba(255,255,0,0.3) 79%, rgba(255,189,0,0.3) 92%);*/
-    background: #ffd301;
-    background: linear-gradient(128deg, rgba(255,211,1,1) 80%, rgba(255,255,255,1) 90%, rgba(255,211,1,1) 100%);
-}
-.not-shiny{
-    background: #ffd301;
-}
-.div-illu{
-    margin-top: 30px;
-    width: 100%;
-    text-align: center;
-}
-
-.card-illu{
-    text-align: center;
-    width: 100px;
-}
-
-
-/****************************** STYLES BOUTONS **********************************/
+/* styles boutons*/
 .actions{
     text-align: center;
     margin: 30px;
@@ -135,11 +55,121 @@ footer {
 }
 
 .btn:hover{
-    /*background-color: #a20000;*/
     border-radius: 100px 10px / 120px;
 }
 
-/****************************** STYLES DETAILS **********************************/
+/****************************** STYLES ELEMENTS ************************************/
+
+/*------------- HEADER ----------------*/
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--pkm_grey);
+    height: 7vh;
+    /*box-shadow: 0 10px 5px var(--pkm_red);*/
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+    .logo{ width: 50px; }
+
+    .header{ display: inline-block; }
+
+    nav ul li{
+        list-style:none;
+        display: inline-block;
+        font-size: 1.5em;
+        width: 150px;
+    }
+
+    nav ul li a{ color: white; text-decoration: none; }
+
+    nav ul li a:hover{  font-weight: bold; }
+
+    .logo:hover{ rotate: 30deg; }
+
+/*------------- FIN HEADER ----------------*/
+
+/*------------- MAIN ----------------*/
+main{ margin: 50px;}
+
+/*------------- FOOTER ----------------*/
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--pkm_grey);
+    color: white;
+    text-align: center;
+    max-height: 10vh;
+}
+
+/****************************** STYLES CARDS LIST POKEDEX **********************************/
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 7vh;
+}
+
+.card {
+    width: 250px;
+    height: 350px;
+    margin: 5px;
+    border-radius: 10px 10px;
+}
+
+.card-body{
+    margin: 10px;
+    color: var(--pkm_blue);
+}
+
+.card-title{
+    text-align: center;
+    color: white;
+    margin: 0;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 10px;
+}
+.card-title a{
+    color: var(--pkm_yellow);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.5em;
+
+}
+.card-header{
+    background-color: var(--pkm_blue) ;
+    text-align: right;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.shiny{
+    background-color: var(--pkm_yellow);
+    background: linear-gradient(130deg, var(--pkm_yellow) 80%, rgba(255,255,255,1) 90%, var(--pkm_yellow) 100%);
+}
+.not-shiny{
+    background: var(--pkm_yellow);
+}
+.div-illu{
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.card-illu{
+    text-align: center;
+    width: 100px;
+}
+
+/****************************** STYLES DETAILS POKEMON + CREATION **********************************/
 
 .detail{
     display: flex;
@@ -147,14 +177,23 @@ footer {
     align-items: center;
 }
 
-
 .description{
     margin-left: 20px;
-    border: 1px #281e83 solid ;
-    padding: 20px;
+    /*border: 1px var(--pkm_blue) solid ;*/
     width: 300px;
     background-color: white;
-    color: #281e83;
+    color: var(--pkm_blue);
+}
+
+.pkm_name {
+    /*background: rgb(55,218,57);*/
+    /*background: linear-gradient(128deg, rgba(55,218,57,1) 25%, rgba(181,69,195,1) 75%);*/
+    display: flex;
+    justify-content: center;
+}
+
+.pkm_details{
+    margin: 20px;
 }
 
 .illu img{
@@ -162,19 +201,41 @@ footer {
     margin-right: 20px;
 }
 
-/****************************** STYLES AJOUT **********************************/
-
-
-.alert-success{
-    background-color: green;
-}
-.alert-danger{
-    background-color: red;
-}
-
-
 .container{
     display: flex;
     justify-content: center;
 }
  #pokedex{width: 200px}
+
+
+.description form input,.description form select{
+    margin: 5px 0 15px 0;
+}
+
+select {
+    background-color: var(--pkm_blue);
+    color: white;
+    border: 0;
+    border-radius:5px;
+    height:30px;
+    width:170px;
+    padding: 2px 4px;
+}
+
+select[multiple] {
+    height:auto;
+}
+
+.pkm_types{
+    margin-right: 5px;
+}
+
+/* flash styles */
+.alert-success{
+    background-color: var(--pkm_blue);
+}
+.alert-danger{
+    background-color: var(--pkm_red);
+}
+
+

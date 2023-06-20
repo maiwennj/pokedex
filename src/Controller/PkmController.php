@@ -12,11 +12,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Clock\now;
 
 #[Route('/pkm', name: 'pkm_')]
 class PkmController extends AbstractController
 {
-    #[Route('/', name: 'list')]
+    #[Route(['/','/home','accueil'], name: 'list')]
     public function index(PokemonRepository $pokemonRepository): Response
     {
         $pokedex = $pokemonRepository->findAll();
@@ -51,16 +52,14 @@ class PkmController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             try {
+                $pokemon->setCatchDate(now());
                 $manager->persist($pokemon);
                 $manager->flush();
                 $this->addFlash('success',"Your pokemon has been added to your Pokedex.");
                 return $this->redirect($this->generateUrl('pkm_details',['id'=>$pokemon->getId()]),);
             }catch (Exception $exception){
                 $this->addFlash('danger','Your Pokemon has been lost in the abyss. Do NOT try to retrieve it. It\'s dead and eaten. ');
-
             }
-
-
         }
 
         return $this->render('pkm/create.html.twig', [

@@ -3,7 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Pokemon;
+use App\Entity\Specie;
+use App\Entity\Type;
+use Doctrine\DBAL\Types\IntegerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,16 +19,26 @@ class PokemonType extends AbstractType
         $builder
             ->add('name',
                 null,[
-                    'label'=>"Name : ",
+                'label'=>"Name : ",
                 'required'=>true,
                 'attr'=>['placeholder'=>'Your pokemon\'s name'],
             ] )
-            ->add('catchDate', null,['label'=>"Caught on : "])
-            ->add('catchPlace', null,['label'=>"Caught in : "])
-            ->add('level', null,['label'=>"Level : "])
-            ->add('hp', null,['label'=>"HP : "])
-            ->add('isShiny', null,['label'=>"Is it shiny ?"])
-        ;
+            ->add('specie',EntityType::class,['label'=>'Specie : ','class'=>Specie::class,'choice_label'=>'name'])
+            ->add('catchPlace', ChoiceType::class,['label'=>"Caught in : ",
+                                    'choices'=>['Kanto'=>'Kanto',
+                                        'Johto'=>'Johto',
+                                        'Hoenn'=>'Hoenn',
+                                        'Sinnoh'=>'Sinnoh',
+                                        'Unys'=>'Unys',
+                                        'Kalos'=>'Kalos',
+                                        'Alola'=>'Alola',
+                                        'Galar'=>'Galar',
+                                        'Hisui'=>'Hisui',
+                                        'Paldea'=>'Paldea'],
+                ])
+            ->add('level', null,['label'=>"Level : ",'attr'=>['min'=>1] ])
+            ->add('hp', null,['label'=>"HP : ",'attr'=>['min'=>0]])
+            ->add('isShiny', null,['label'=>"Shiny ?"]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

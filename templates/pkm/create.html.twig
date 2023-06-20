@@ -9,30 +9,40 @@
                 <a class="btn bg-ok" href="{{ path('pkm_random') }}">Random pokemon</a>
         </div>
 
-
-
         <div class="detail">
                 <div class="illu details">
-                        <img src="{{ asset("assets/images/unown.svg") }}" alt=""></div>
+                        <img src="{{ asset("assets/images/201.svg") }}" alt=""></div>
                 <div class="details description">
-                        {{ form_start(form) }}
-                        {{ form_rest(form) }}
-                        <button type="submit">Enregistrer</button>
-                        {{ form_end(form) }}
+                        <div class="pkm_details">
+                                {{ form_start(form) }}
+                                        {{ form_label(form.name) }}<br>
+                                        {{ form_widget(form.name) }}<br>
+                                        {{ form_errors(form.name) }}
+
+                                        {{ form_label(form.specie) }}<br>
+                                        {{ form_widget(form.specie) }}<br>
+                                        {{ form_errors(form.specie) }}
+
+                                        {{ form_label(form.catchPlace) }}<br>
+                                        {{ form_widget(form.catchPlace) }}<br>
+                                        {{ form_errors(form.catchPlace) }}
+
+                                        {{ form_label(form.level) }}<br>
+                                        {{ form_widget(form.level) }}<br>
+                                        {{ form_errors(form.level) }}
+
+                                        {{ form_label(form.hp) }}<br>
+                                        {{ form_widget(form.hp) }}<br>
+                                        {{ form_errors(form.hp) }}
+
+                                        {{ form_label(form.isShiny) }}
+                                        {{ form_widget(form.isShiny) }}<br>
+                                        {{ form_errors(form.isShiny) }}
+
+                                {{ form_rest(form) }}
+                                <button type="submit">Enregistrer</button>
+                                {{ form_end(form) }}
+                        </div>
                 </div>
         </div>
-
-
-{#    {{ form_start(form) }}#}
-{#    {{ form_label(form.prenom) }}#}
-{#    {{ form_widget(form.prenom) }}#}
-
-{#    {{ form_label(form.nom) }}#}
-{#    {{ form_widget(form.nom) }}#}
-{#    {{ form_label(form.email) }}#}
-{#    {{ form_widget(form.email) }}#}
-{#    {{ form_rest(form) }}#}
-{#    <button type="submit">Enregistrer</button>#}
-{#    {{ form_end(form) }}#}
-
 {% endblock %}

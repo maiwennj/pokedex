@@ -14,19 +14,13 @@
     </head>
     <body>
         <header>
-            <a class="header" href="#"><img class="logo" src="{{ asset('assets/images/pokeballs.png') }}" alt=""></a>
-            <h1 class="header">Pokédex</h1>
+            <a class="nav-link" href="{{ path('app_main') }}"><img class="logo" src="{{ asset('assets/images/pokeballs.png') }}" alt=""></a>
+            <h1 class="header"><a class="nav-link" href="{{ path('pkm_list') }}">Pokédex</a></h1>
             <nav class="header" data-bs-theme="dark">
                 <ul class="header">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_main') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('pkm_list') }}">Pokedex</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_about_us') }}">About</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_main') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('pkm_list') }}">List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('pkm_create') }}">Add</a></li>
                 </ul>
             </nav>
         </header>
@@ -43,8 +37,8 @@
             {% endblock %}
         </main>
        <footer>
-           <hr>
            <p>&copy;Pokedex by Maï 2023</p>
        </footer>
+    {% block scripts %}{% endblock %}
     </body>
 </html>
