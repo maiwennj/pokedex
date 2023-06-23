@@ -23,7 +23,7 @@
                 <p id="types"><strong>Type(s) :</strong>
 
                     {% for type in pokemon.specie.types %}
-                        <span class="pkm_types">{{ type.name }}</span>
+                        <span class="pkm_types {{ type.name|lower }}">{{ type.name }}</span>
                     {% endfor %}
                 </p>
             </div>

@@ -20,7 +20,7 @@
                     <p class="card-text"><strong>CAUGHT IN: </strong>{{ pokemon.catchPlace }}</p>
                     <p class="card-text"><strong>LEVEL : </strong>{{ pokemon.level }}</p>
                     <p class="card-text"><strong>HP : </strong>{{ pokemon.hp }}</p>
-                    <div class="div-illu"><img class="card-illu" src="{{ asset("assets/images/#{ pokemon.specie.number }.svg") }}" alt=""></div>
+                    <div class="div-illu"><a href="{{ path('pkm_details',{'id': pokemon.id}) }}"><img class="card-illu" src="{{ asset("assets/images/#{ pokemon.specie.number }.svg") }}" alt=""></a></div>
                 </div>
             </div>
         {% endfor %}

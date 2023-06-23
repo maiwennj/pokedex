@@ -3,8 +3,6 @@
     --pkm_yellow:#ffd301;
     --pkm_grey:#383838;
     --pkm_red:#FF0000FF;
-
-
 }
 
 @font-face {
@@ -19,14 +17,11 @@ body{
     position: relative;
     background-color: #eaeaea;
     height: 100%;
-
 }
+
 h1{font-family: pokemon, serif;}
 
-    h1 a{
-        text-decoration: none;
-        color: var(--pkm_red);
-    }
+    h1 a{text-decoration: none;color: var(--pkm_red);}
 
 h2{ color: var(--pkm_blue); text-align: center;margin-top: 10vh }
 
@@ -69,11 +64,11 @@ header{
     height: 7vh;
     /*box-shadow: 0 10px 5px var(--pkm_red);*/
     position: fixed;
+    z-index: 5;
     width: 100%;
     top: 0;
 }
     .logo{ width: 50px; }
-
     .header{ display: inline-block; }
 
     nav ul li{
@@ -84,12 +79,8 @@ header{
     }
 
     nav ul li a{ color: white; text-decoration: none; }
-
     nav ul li a:hover{  font-weight: bold; }
-
     .logo:hover{ rotate: 30deg; }
-
-/*------------- FIN HEADER ----------------*/
 
 /*------------- MAIN ----------------*/
 main{ margin: 50px;}
@@ -99,10 +90,10 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    max-height: 10vh;
     background-color: var(--pkm_grey);
     color: white;
     text-align: center;
-    max-height: 10vh;
 }
 
 /****************************** STYLES CARDS LIST POKEDEX **********************************/
@@ -141,7 +132,6 @@ footer {
     font-weight: bold;
     text-decoration: none;
     font-size: 1.5em;
-
 }
 .card-header{
     background-color: var(--pkm_blue) ;
@@ -152,21 +142,27 @@ footer {
 }
 
 .shiny{
-    background-color: var(--pkm_yellow);
-    background: linear-gradient(130deg, var(--pkm_yellow) 80%, rgba(255,255,255,1) 90%, var(--pkm_yellow) 100%);
+    background: var(--pkm_yellow) linear-gradient(130deg, var(--pkm_yellow) 80%, rgba(255, 255, 255, 1) 90%, var(--pkm_yellow) 100%);
 }
 .not-shiny{
     background: var(--pkm_yellow);
 }
 .div-illu{
-    margin-top: 30px;
+    margin-top: 10px;
     width: 100%;
     text-align: center;
 }
 
 .card-illu{
     text-align: center;
-    width: 100px;
+    width: 130px;
+    filter: drop-shadow(0 0 0.2rem var(--pkm_blue) );
+}
+
+.card-illu:hover{
+    filter: drop-shadow(0 0 0.5rem var(--pkm_blue) );
+    /*width: 120px;*/
+    transform: scale(2);
 }
 
 /****************************** STYLES DETAILS POKEMON + CREATION **********************************/
@@ -179,15 +175,14 @@ footer {
 
 .description{
     margin-left: 20px;
-    /*border: 1px var(--pkm_blue) solid ;*/
     width: 300px;
     background-color: white;
     color: var(--pkm_blue);
 }
 
 .pkm_name {
-    /*background: rgb(55,218,57);*/
-    /*background: linear-gradient(128deg, rgba(55,218,57,1) 25%, rgba(181,69,195,1) 75%);*/
+    background: var(--pkm_red);
+    color: white;
     display: flex;
     justify-content: center;
 }
@@ -205,8 +200,8 @@ footer {
     display: flex;
     justify-content: center;
 }
- #pokedex{width: 200px}
 
+#pokedex{width: 200px}
 
 .description form input,.description form select{
     margin: 5px 0 15px 0;
@@ -228,6 +223,65 @@ select[multiple] {
 
 .pkm_types{
     margin-right: 5px;
+    border-radius: 5px;
+    padding: 2px 5px;
+    color: white;
+    box-shadow: 2px 2px 2px var(--pkm_grey);
+}
+
+.fire{
+    background-color: #f08030;
+}
+.flying{
+    background-color: #a890f0;
+}
+.steel{
+    background-color: #b8b8d0;
+}
+.normal{
+    background-color: #a8a878;
+}
+.fighting{
+    background-color: #c03028;
+}
+.poison{
+    background-color: #a040a0;
+}
+.ground{
+    background-color: #e0c068;
+}
+.rock{
+    background-color: #b8a038;
+}
+.bug{
+    background-color: #a8b820;
+}
+.ghost{
+    background-color: #705898;
+}
+.water{
+    background-color: #6890f0;
+}
+.grass{
+    background-color: #78c850;
+}
+.electric{
+    background-color: #f8d030;
+}
+.psychic{
+    background-color: #f85888;
+}
+.ice{
+    background-color: #98d8d8;
+}
+.dragon{
+    background-color: #7038f8;
+}
+.dark{
+    background-color: #705848;
+}
+.fairy{
+    background-color: #ee99ac;
 }
 
 /* flash styles */
@@ -237,5 +291,3 @@ select[multiple] {
 .alert-danger{
     background-color: var(--pkm_red);
 }
-
-
