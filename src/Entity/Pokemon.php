@@ -17,7 +17,13 @@ class Pokemon
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Assert\Assert\NotBlank()]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min:3,
+        max:255,
+        minMessage: "The name is too short. It has to contain 3 or more letters.",
+        maxMessage: "The name is too long. It cannot be longer than 255 letters.")]
+
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 

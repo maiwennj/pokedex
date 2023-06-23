@@ -160,7 +160,7 @@ footer {
 }
 
 .card-illu:hover{
-    filter: drop-shadow(0 0 0.5rem var(--pkm_blue) );
+    /*filter: drop-shadow(0 0 0.5rem var(--pkm_blue) );*/
     /*width: 120px;*/
     transform: scale(2);
 }

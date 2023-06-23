@@ -37,6 +37,7 @@ class PkmController extends AbstractController
     #[Route('/{id}', name: 'details',requirements: ['id'=>'\d+'])]
     public function details(PokemonRepository $pokemonRepository,$id): Response
     {
+
         $pokemon = $pokemonRepository->find($id);
         return $this->render('pkm/details.html.twig', [
             'pokemon'=>$pokemon
@@ -46,10 +47,14 @@ class PkmController extends AbstractController
     #[Route('/create', name: 'create')]
     public function create(Request $request,EntityManagerInterface $manager): Response
     {
+
+        // création du formulaire
         $pokemon = new Pokemon();
         $form = $this->createForm(PokemonType::class,$pokemon);
 
+        // traitement du formulaire
         $form->handleRequest($request);
+        // vérifications de soumission et de validité
         if ($form->isSubmitted() && $form->isValid()){
             try {
                 $pokemon->setCatchDate(now());
@@ -62,6 +67,7 @@ class PkmController extends AbstractController
             }
         }
 
+        // afficher la page pkm/create
         return $this->render('pkm/create.html.twig', [
             'form' => $form->createView()
         ]);

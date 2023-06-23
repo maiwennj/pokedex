@@ -34,7 +34,7 @@ class PokemonType extends AbstractType
                                         'Alola'=>'Alola',
                                         'Galar'=>'Galar',
                                         'Hisui'=>'Hisui',
-                                        'Paldea'=>'Paldea'],
+                                        'Paldea'=>'Paldea']
                 ])
             ->add('level', null,['label'=>"Level : ",'attr'=>['min'=>1] ])
             ->add('hp', null,['label'=>"HP : ",'attr'=>['min'=>0]])
