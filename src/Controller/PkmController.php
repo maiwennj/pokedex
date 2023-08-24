@@ -37,7 +37,6 @@ class PkmController extends AbstractController
     #[Route('/{id}', name: 'details',requirements: ['id'=>'\d+'])]
     public function details(PokemonRepository $pokemonRepository,$id): Response
     {
-
         $pokemon = $pokemonRepository->find($id);
         return $this->render('pkm/details.html.twig', [
             'pokemon'=>$pokemon
